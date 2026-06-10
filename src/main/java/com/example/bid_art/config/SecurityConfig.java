@@ -30,6 +30,7 @@ public class SecurityConfig {
             // 4. 권한 설정
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/ws/**")).permitAll() // WebSocket 핸드셰이크 개방
                 .requestMatchers(new AntPathRequestMatcher("/api/**")).permitAll() // API 경로 전면 개방
                 .anyRequest().authenticated()
             );
